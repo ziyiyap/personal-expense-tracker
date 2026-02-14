@@ -21,21 +21,14 @@ def export_csv():
     #feb_expenses.csv
     export_dir = setup.exports
     for log in log_dic:
+        print(log)
         current_date = log['date'] #2026-02-05
         d_month = datetime.strptime(current_date, "%Y-%m-%d")  #2026-02-05
         month_year = d_month.strftime("%b_%y").lower() #feb_26
         file_dir = export_dir / f"{month_year}_expenses.csv"
-        file_exists = file_dir.exists()
-        with open(file_dir,'a',newline='') as file: #feb_26_expenses.csv
-            write_csv = csv.writer(file)
-            if not file_exists:
-                write_csv.writerow(["Date","Category","Description","Amount"])
-            write_csv.writerow([log['date'], log['category'], log['description'], log['amount']])
-
 
 def add_expense():
     os.system('cls')
-    print(log_dic)
     try:
         amount = round(float(input("Enter amount: ")),2)
     except ValueError as e:
