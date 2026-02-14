@@ -3,7 +3,9 @@ import os
 import time
 import json
 
-data_dir = Path(r"./personal-expense-tracker/data")
+base_dir = Path(__file__).parent
+os.chdir(base_dir)
+data_dir = base_dir/ "data"
 exports = data_dir / "exports"
 expenses_json = data_dir / 'expenses.json'
 
@@ -11,7 +13,7 @@ def s():
     if data_dir.exists():
         return
     else:
-        data_dir.mkdir()
+        data_dir.mkdir(exist_ok=True)
         exports.mkdir(parents=True, exist_ok=True)
         expenses_json.touch()
         print("Folder created!")
