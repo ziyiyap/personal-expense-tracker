@@ -1,0 +1,22 @@
+[
+    {"id":"050226101215","amount":34.50,"category":"Food","description":"Dinner","date":"2026-02-05"},
+    {"id":"180226083042","amount":75.00,"category":"Fees","description":"Tuition","date":"2026-02-18"},
+    {"id":"090226073010","amount":8.25,"category":"Transport","description":"Taxi","date":"2026-02-09"},
+    {"id":"150326201530","amount":20.00,"category":"Food","description":"Lunch","date":"2026-03-15"},
+    {"id":"220326091205","amount":49.99,"category":"Shopping","description":"Clothes","date":"2026-03-22"},
+    {"id":"121225173400","amount":12.30,"category":"Transport","description":"Bus","date":"2025-12-12"},
+    {"id":"070726131020","amount":120.75,"category":"Utilities","description":"Internet","date":"2026-07-07"},
+    {"id":"011126083015","amount":15.00,"category":"Entertainment","description":"Movies","date":"2025-11-01"},
+    {"id":"300625144500","amount":60.40,"category":"Shopping","description":"Groceries","date":"2026-06-30"},
+    {"id":"160826190505","amount":45.00,"category":"Food","description":"Breakfast","date":"2026-08-16"},
+    {"id":"250226111530","amount":22.50,"category":"Food","description":"Snack","date":"2026-02-25"},
+    {"id":"030326123045","amount":55.00,"category":"Fees","description":"Lab","date":"2026-03-03"},
+    {"id":"140726092015","amount":18.75,"category":"Transport","description":"Fuel","date":"2026-07-14"},
+    {"id":"190826143210","amount":95.20,"category":"Shopping","description":"Gadgets","date":"2026-08-19"},
+    {"id":"060226174500","amount":12.00,"category":"Food","description":"Breakfast","date":"2026-02-06"},
+    {"id":"280326100530","amount":35.00,"category":"Entertainment","description":"Concert","date":"2026-03-28"},
+    {"id":"170725183015","amount":80.00,"category":"Utilities","description":"Electricity","date":"2025-07-17"},
+    {"id":"020626071500","amount":9.50,"category":"Transport","description":"Taxi","date":"2026-06-02"},
+    {"id":"120826131400","amount":50.00,"category":"Food","description":"Dinner","date":"2026-08-12"},
+    {"id":"240725101200","amount":40.00,"category":"Shopping","description":"Groceries","date":"2025-07-24"}
+]
