@@ -18,14 +18,30 @@ def upload_json():
     return
 
 def export_csv():
-    #feb_expenses.csv
+    monthyear_data = {}
     export_dir = setup.exports
-    for log in log_dic:
-        print(log)
-        current_date = log['date'] #2026-02-05
-        d_month = datetime.strptime(current_date, "%Y-%m-%d")  #2026-02-05
-        month_year = d_month.strftime("%b_%y").lower() #feb_26
-        file_dir = export_dir / f"{month_year}_expenses.csv"
+    if log_dic == []:
+        print("Nothing to export")
+        time.sleep(2)
+        return
+    else:
+        for log in log_dic:
+            current_date_str = log['date']
+            strptime_date = datetime.strptime(current_date_str, "%Y-%m-%d")
+            strftime_date = strptime_date.strftime('%b_%y').lower()
+            if strftime_date not in monthyear_data:
+                monthyear_data[strftime_date] = []
+            monthyear_data[strftime_date].append([log['date'],log['category'],log['description'],log['amount']])
+        for k,v in monthyear_data.items():
+            csv_file = export_dir / f"{k}.csv"
+            with open(csv_file, 'w',newline='') as file:
+                writer = csv.writer(file)
+                writer.writerow(['Date','Category','Description','Amount'])
+                for data in v:
+                    writer.writerow(data)
+        print(f"Successfully exported {len(monthyear_data.keys())} files")
+        time.sleep(2)
+        return
 
 def add_expense():
     os.system('cls')
