@@ -2,7 +2,6 @@ from setup import s
 import os
 import expense_functions
 import time
-s()
 online = True
 
 choices_dict = {
@@ -40,6 +39,7 @@ Enter your choice (1-9):
             v()
             return
     print("Invalid choice")
+    time.sleep(1)
     return
 while online:
     os.system('cls')
