@@ -19,12 +19,5 @@
         "category": "Food",
         "description": "Maggi",
         "date": "2026-02-15"
-    },
-    {
-        "id": "260215160655",
-        "amount": 19.5,
-        "category": "Entertainment",
-        "description": "Movie tickets",
-        "date": "2026-02-15"
     }
 ]

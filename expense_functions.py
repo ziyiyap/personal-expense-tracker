@@ -39,8 +39,6 @@ def export_csv():
                 writer.writerow(['Date','Category','Description','Amount'])
                 for data in v:
                     writer.writerow(data)
-        print(f"Successfully exported {len(monthyear_data.keys())} files")
-        time.sleep(2)
         return
 
 def add_expense():
@@ -107,4 +105,15 @@ def top_spending_cat():
 
 def delete_expense():
     os.system('cls')
+    ask_id = str(input("Enter ID: "))
+    for i, dict in enumerate(log_dic):
+        if dict['id'] == ask_id.strip():
+            log_dic.pop(i)
+            upload_json()
+            export_csv()
+            print(f'✓ Expense removed successfully!')
+            time.sleep(3)
+            return
+    print("ID not found")
+    time.sleep(1)
     return
