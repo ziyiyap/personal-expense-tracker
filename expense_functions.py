@@ -134,36 +134,41 @@ def month_summary():
     sum_ls = []
     category = {}
     os.system('cls')
-    ask_user = str(input("Enter the month and the year:\n Ex. 02/26\n")) #03/26
-    convert_text = datetime.strptime(ask_user, '%m/%y').strftime('%b_%y').lower()
-    for csv_files in setup.exports.iterdir():
-        if csv_files.name == f"{convert_text}.csv":
-            with open(csv_files) as file:
-                csv_reader = csv.reader(file)
-                for row in csv_reader:
-                    if no_row == 0:
+    try:
+        ask_user = str(input("Enter the month and the year:\n Ex. 02/26\n")) #03/26
+        convert_text = datetime.strptime(ask_user, '%m/%y').strftime('%b_%y').lower()
+        for csv_files in setup.exports.iterdir():
+            if csv_files.name == f"{convert_text}.csv":
+                with open(csv_files) as file:
+                    csv_reader = csv.reader(file)
+                    for row in csv_reader:
+                        if no_row == 0:
+                            no_row +=1
+                            continue
+                        if row[1] not in category:
+                            category[row[1]] = float(row[3])
+                        else:
+                            category[row[1]] += float(row[3])
+                        sum_ls.append(float(row[3]))
                         no_row +=1
-                        continue
-                    if row[1] not in category:
-                        category[row[1]] = float(row[3])
-                    else:
-                        category[row[1]] += float(row[3])
-                    sum_ls.append(float(row[3]))
-                    no_row +=1
-    sum_of_amount = sum(sum_ls)
-    os.system('cls')
-    print(f"{'-' * 75}\n{'MONTHLY SUMMARY'.center(75)}\n{'-'*75}")
-    print(f"Total spending: RM{sum_of_amount}\nAverage expense: RM{round(statistics.mean(category.values()),2)}")
-    print()
-    print(f'Breakdown by category:\n{'-' * 75}')
-    str_format = '{:<25} {:<25} {:<25}'
-    for k,v in category.items():
-        ls = [k,f"RM{v}",f"({round(v/sum_of_amount * 100, 2)}%)"]
-        print(str_format.format(*ls))
-    print('-'*75)
+        sum_of_amount = sum(sum_ls)
+        os.system('cls')
+        print(f"{'-' * 75}\n{'MONTHLY SUMMARY'.center(75)}\n{'-'*75}")
+        print(f"Total spending: RM{sum_of_amount}\nAverage expense: RM{round(statistics.mean(category.values()),2)}")
+        print()
+        print(f'Breakdown by category:\n{'-' * 75}')
+        str_format = '{:<25} {:<25} {:<25}'
+        for k,v in category.items():
+            ls = [k,f"RM{v}",f"({round(v/sum_of_amount * 100, 2)}%)"]
+            print(str_format.format(*ls))
+        print('-'*75)
 
-    _ = input('')
-    return
+        _ = input('')
+        return
+    except ValueError:
+        print('Error')
+        time.sleep(2)
+        return
 
 def top_spending_cat():
     os.system('cls')   
