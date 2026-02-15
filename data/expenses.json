@@ -1,23 +1,32 @@
 [
-    {
-        "id": "260214220322",
-        "amount": 20.0,
-        "category": "Food",
-        "description": "Lunch",
-        "date": "2026-02-14"
-    },
-    {
-        "id": "260215144201",
-        "amount": 13.1,
-        "category": "Food",
-        "description": "Snacks",
-        "date": "2026-02-15"
-    },
-    {
-        "id": "260215144754",
-        "amount": 12.0,
-        "category": "Food",
-        "description": "Maggi",
-        "date": "2026-02-15"
-    }
+    { "id": "260105083015", "amount": 42.00, "category": "Utilities", "description": "Water Bill", "date": "2026-01-05" },
+    { "id": "260112124510", "amount": 15.00, "category": "Food", "description": "Lunch Meal", "date": "2026-01-12" },
+    { "id": "260120183022", "amount": 55.00, "category": "Transport", "description": "Monthly Pass", "date": "2026-01-20" },
+    { "id": "260128091544", "amount": 12.50, "category": "Food", "description": "Breakfast", "date": "2026-01-28" },
+    { "id": "260130192011", "amount": 110.00, "category": "Shopping", "description": "New Shoes", "date": "2026-01-30" },
+    { "id": "260205100005", "amount": 8.00, "category": "Food", "description": "Coffee & Cake", "date": "2026-02-05" },
+    { "id": "260214143059", "amount": 65.00, "category": "Entertainment", "description": "Valentine Dinner", "date": "2026-02-14" },
+    { "id": "260222112033", "amount": 22.00, "category": "Health", "description": "Vitamins", "date": "2026-02-22" },
+    { "id": "260303201500", "amount": 18.20, "category": "Food", "description": "Pizza Night", "date": "2026-03-03" },
+    { "id": "260310084512", "amount": 40.00, "category": "Transport", "description": "Petrol", "date": "2026-03-10" },
+    { "id": "260315130045", "amount": 95.00, "category": "Groceries", "description": "Stock up", "date": "2026-03-15" },
+    { "id": "260325173021", "amount": 14.00, "category": "Food", "description": "Street Food", "date": "2026-03-25" },
+    { "id": "260402103000", "amount": 12.00, "category": "Entertainment", "description": "Movie", "date": "2026-04-02" },
+    { "id": "260408152010", "amount": 35.00, "category": "Shopping", "description": "Home Decor", "date": "2026-04-08" },
+    { "id": "260415090000", "amount": 75.00, "category": "Bills", "description": "Electricity", "date": "2026-04-15" },
+    { "id": "260422123044", "amount": 9.50, "category": "Food", "description": "Sandwich", "date": "2026-04-22" },
+    { "id": "260429081522", "amount": 20.00, "category": "Transport", "description": "Taxi Ride", "date": "2026-04-29" },
+    { "id": "260505184510", "amount": 13.00, "category": "Food", "description": "Noodles", "date": "2026-05-05" },
+    { "id": "260512121533", "amount": 50.00, "category": "Health", "description": "Checkup", "date": "2026-05-12" },
+    { "id": "260518200011", "amount": 28.00, "category": "Shopping", "description": "Game", "date": "2026-05-18" },
+    { "id": "260525093045", "amount": 5.50, "category": "Food", "description": "Latte", "date": "2026-05-25" },
+    { "id": "260530130000", "amount": 105.00, "category": "Groceries", "description": "Weekly Mart", "date": "2026-05-30" },
+    { "id": "260604191522", "amount": 15.00, "category": "Food", "description": "Burger Combo", "date": "2026-06-04" },
+    { "id": "260610110010", "amount": 45.00, "category": "Transport", "description": "Petrol", "date": "2026-06-10" },
+    { "id": "260614143044", "amount": 25.00, "category": "Entertainment", "description": "Bowling", "date": "2026-06-14" },
+    { "id": "260618084500", "amount": 8.00, "category": "Food", "description": "Pastry", "date": "2026-06-18" },
+    { "id": "260622122011", "amount": 19.50, "category": "Food", "description": "Salad Bar", "date": "2026-06-22" },
+    { "id": "260625101533", "amount": 60.00, "category": "Shopping", "description": "Gift", "date": "2026-06-25" },
+    { "id": "260628154022", "amount": 12.00, "category": "Food", "description": "Ice Cream", "date": "2026-06-28" },
+    { "id": "260630210000", "amount": 85.00, "category": "Bills", "description": "Internet", "date": "2026-06-30" }
 ]

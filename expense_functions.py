@@ -4,8 +4,7 @@ from datetime import datetime, date
 import time
 import os
 import csv
-from pathlib import Path
-from functools import reduce
+import statistics
 
 setup.s()
 with open(setup.expenses_json, encoding='utf-8') as f:
@@ -111,35 +110,62 @@ def v_expense_cat():
     return 
 
 def v_expense_date():
-    #'2026-02-15' , strf -> formatted-time
-    #formatted-time -> ?
-    # ? -> date()
-    # sorted()
-    os.system('cls')
-    print('=' * 60, ' ALL EXPENSES ', '=' *60)
-    string_format = '{:<27} {:<27} {:<27} {:<27} {:<27}'
-    header = ['ID', 'Date', 'Category', 'Amount', 'Description']
-    data = [[log['id'], log['date'], log['category'], f"RM{log['amount']}", log['description']] for log in log_dic]
-    dataa = sorted(data, key=lambda x:x[1])
-    data_slice = [list(map(lambda x: x[:27], ls)) for ls in dataa]
-    view_header = string_format.format(*header)
-    print(view_header)
-    print('-'*135)
-    for elements in data_slice:
-        print(string_format.format(*elements))
-        
-    print('=' * 135)
-    sum_of_amount = sum(log['amount'] for log in log_dic)
-    print(f'Total: RM{sum_of_amount}')
-    _ = input('')
-    return 
+        os.system('cls')
+        print('=' * 60, ' ALL EXPENSES ', '=' *60)
+        string_format = '{:<27} {:<27} {:<27} {:<27} {:<27}'
+        header = ['ID', 'Date', 'Category', 'Amount', 'Description']
+        data = [[log['id'], log['date'], log['category'], f"RM{log['amount']}", log['description']] for log in log_dic]
+        dataa = sorted(data, key=lambda x:x[1])
+        data_slice = [list(map(lambda x: x[:27], ls)) for ls in dataa]
+        view_header = string_format.format(*header)
+        print(view_header)
+        print('-'*135)
+        for elements in data_slice:
+            print(string_format.format(*elements))
+            
+        print('=' * 135)
+        sum_of_amount = sum(log['amount'] for log in log_dic)
+        print(f'Total: RM{sum_of_amount}')
+        _ = input('')
+        return 
 
 def month_summary():
+    no_row = 0
+    sum_ls = []
+    category = {}
     os.system('cls')
+    ask_user = str(input("Enter the month and the year:\n Ex. 02/26\n")) #03/26
+    convert_text = datetime.strptime(ask_user, '%m/%y').strftime('%b_%y').lower()
+    for csv_files in setup.exports.iterdir():
+        if csv_files.name == f"{convert_text}.csv":
+            with open(csv_files) as file:
+                csv_reader = csv.reader(file)
+                for row in csv_reader:
+                    if no_row == 0:
+                        no_row +=1
+                        continue
+                    if row[1] not in category:
+                        category[row[1]] = float(row[3])
+                    else:
+                        category[row[1]] += float(row[3])
+                    sum_ls.append(float(row[3]))
+                    no_row +=1
+    sum_of_amount = sum(sum_ls)
+    os.system('cls')
+    print(f"{'-' * 40}\n{'MONTHLY SUMMARY'.center(40)}\n{'-'*40}")
+    print(f"Total spending: RM{sum_of_amount}\nAverage expense: RM{round(statistics.mean(list(category.values())),2)}")
+    print()
+    print(f'Breakdown by category:\n{'-' * 40}')
+    str_format = '{:<15} {:<15} {:<15}'
+    for k,v in category.items():
+        ls = [k,f"RM{v}",f"{round(v/sum_of_amount * 100, 2)}%"]
+        print(str_format.format(*ls))
+    s = input('')
+        
     return
 
 def top_spending_cat():
-    os.system('cls')
+    os.system('cls')        
     return
 
 def delete_expense():
