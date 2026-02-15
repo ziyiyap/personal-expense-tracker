@@ -153,7 +153,7 @@ def month_summary():
     sum_of_amount = sum(sum_ls)
     os.system('cls')
     print(f"{'-' * 75}\n{'MONTHLY SUMMARY'.center(75)}\n{'-'*75}")
-    print(f"Total spending: RM{sum_of_amount}\nAverage expense: RM{round(statistics.mean(list(category.values())),2)}")
+    print(f"Total spending: RM{sum_of_amount}\nAverage expense: RM{round(statistics.mean(category.values()),2)}")
     print()
     print(f'Breakdown by category:\n{'-' * 75}')
     str_format = '{:<25} {:<25} {:<25}'
@@ -166,7 +166,25 @@ def month_summary():
     return
 
 def top_spending_cat():
-    os.system('cls')        
+    os.system('cls')   
+    print('=' * 78)
+    string_format = '{:<23} {:<25} {:<25}'
+    print(string_format.format(*['Category','Amount','Percentage']))
+    print('=' * 78)
+    category_json = {}
+    for e in log_dic:
+        if e['category'] not in category_json:
+            category_json[e['category']] = e['amount']
+        else:
+            category_json[e['category']] += e['amount']
+    sum_of_category = sum(category_json.values())
+    ls = [[f"{category}",f'RM{v}',f'{round(v/sum_of_category * 100,2)}%'] for category,v in category_json.items()]
+    sorted_ls = sorted(ls, key=lambda x: float(x[2].rstrip('%')), reverse=True)
+    for i,l in enumerate(sorted_ls):
+        l[0] = f"{i+1}. {l[0]}"
+    for category in sorted_ls:
+        print(string_format.format(*category))
+    _ = input('')     
     return
 
 def delete_expense():
