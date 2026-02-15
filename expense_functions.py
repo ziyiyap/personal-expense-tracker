@@ -74,17 +74,19 @@ def add_expense():
     
 def view_all_expense():
     os.system('cls')
-    print(
-        """==================== ALL EXPENSES ====================
-ID           Date         Category         Amount    Description
------------- ------------ ---------------- --------- ---------------------------"""
-    )
-
-
-    print(
-        """======================================================"""
-    )
-    time.sleep(2)
+    print('=' * 60, ' ALL EXPENSES ', '=' *60)
+    string_format = '{:<27} {:<27} {:<27} {:<27} {:<27}'
+    header = ['ID', 'Date', 'Category', 'Amount', 'Description']
+    data = [[log['id'], log['date'], log['category'], f"RM{log['amount']}", log['description']] for log in log_dic]
+    data_slice = [list(map(lambda x: x[:27], ls)) for ls in data]
+    view_header = string_format.format(*header)
+    print(view_header)
+    print('-'*135)
+    for elements in data_slice:
+        print(string_format.format(*elements))
+        
+    print('=' * 135)
+    _ = input('')
     return
 
 def v_expense_cat():
