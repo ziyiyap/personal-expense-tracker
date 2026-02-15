@@ -1,10 +1,11 @@
 import json
 import setup
-from datetime import datetime
+from datetime import datetime, date
 import time
 import os
 import csv
 from pathlib import Path
+from functools import reduce
 
 setup.s()
 with open(setup.expenses_json, encoding='utf-8') as f:
@@ -84,16 +85,54 @@ def view_all_expense():
         print(string_format.format(*elements))
         
     print('=' * 135)
+    sum_of_amount = sum(log['amount'] for log in log_dic)
+    print(f'Total: RM{sum_of_amount}')
     _ = input('')
-    return
+    return 
 
 def v_expense_cat():
     os.system('cls')
-    return
+    print('=' * 60, ' ALL EXPENSES ', '=' *60)
+    string_format = '{:<27} {:<27} {:<27} {:<27} {:<27}'
+    header = ['ID', 'Date', 'Category', 'Amount', 'Description']
+    data = [[log['id'], log['date'], log['category'], f"RM{log['amount']}", log['description']] for log in log_dic]
+    dataa = sorted(data, key=lambda x: x[2])
+    data_slice = [list(map(lambda x: x[:27], ls)) for ls in dataa]
+    view_header = string_format.format(*header)
+    print(view_header)
+    print('-'*135)
+    for elements in data_slice:
+        print(string_format.format(*elements))
+        
+    print('=' * 135)
+    sum_of_amount = sum(log['amount'] for log in log_dic)
+    print(f'Total: RM{sum_of_amount}')
+    _ = input('')
+    return 
 
 def v_expense_date():
+    #'2026-02-15' , strf -> formatted-time
+    #formatted-time -> ?
+    # ? -> date()
+    # sorted()
     os.system('cls')
-    return
+    print('=' * 60, ' ALL EXPENSES ', '=' *60)
+    string_format = '{:<27} {:<27} {:<27} {:<27} {:<27}'
+    header = ['ID', 'Date', 'Category', 'Amount', 'Description']
+    data = [[log['id'], log['date'], log['category'], f"RM{log['amount']}", log['description']] for log in log_dic]
+    dataa = sorted(data, key=lambda x:x[1])
+    data_slice = [list(map(lambda x: x[:27], ls)) for ls in dataa]
+    view_header = string_format.format(*header)
+    print(view_header)
+    print('-'*135)
+    for elements in data_slice:
+        print(string_format.format(*elements))
+        
+    print('=' * 135)
+    sum_of_amount = sum(log['amount'] for log in log_dic)
+    print(f'Total: RM{sum_of_amount}')
+    _ = input('')
+    return 
 
 def month_summary():
     os.system('cls')
