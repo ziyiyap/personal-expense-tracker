@@ -152,16 +152,17 @@ def month_summary():
                     no_row +=1
     sum_of_amount = sum(sum_ls)
     os.system('cls')
-    print(f"{'-' * 40}\n{'MONTHLY SUMMARY'.center(40)}\n{'-'*40}")
+    print(f"{'-' * 75}\n{'MONTHLY SUMMARY'.center(75)}\n{'-'*75}")
     print(f"Total spending: RM{sum_of_amount}\nAverage expense: RM{round(statistics.mean(list(category.values())),2)}")
     print()
-    print(f'Breakdown by category:\n{'-' * 40}')
-    str_format = '{:<15} {:<15} {:<15}'
+    print(f'Breakdown by category:\n{'-' * 75}')
+    str_format = '{:<25} {:<25} {:<25}'
     for k,v in category.items():
-        ls = [k,f"RM{v}",f"{round(v/sum_of_amount * 100, 2)}%"]
+        ls = [k,f"RM{v}",f"({round(v/sum_of_amount * 100, 2)}%)"]
         print(str_format.format(*ls))
-    s = input('')
-        
+    print('-'*75)
+
+    _ = input('')
     return
 
 def top_spending_cat():
