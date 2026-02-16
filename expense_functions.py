@@ -75,7 +75,7 @@ def view_all_expense():
     print('=' * 60, ' ALL EXPENSES ', '=' *60)
     string_format = '{:<27} {:<27} {:<27} {:<27} {:<27}'
     header = ['ID', 'Date', 'Category', 'Amount', 'Description']
-    data = [[log['id'], log['date'], log['category'], f"RM{log['amount']}", log['description']] for log in log_dic]
+    data = [[log['id'], log['date'], log['category'], f"RM{log['amount']:.2f}", log['description']] for log in log_dic]
     data_slice = [list(map(lambda x: x[:27], ls)) for ls in data]
     view_header = string_format.format(*header)
     print(view_header)
@@ -85,16 +85,16 @@ def view_all_expense():
         
     print('=' * 135)
     sum_of_amount = sum(log['amount'] for log in log_dic)
-    print(f'Total: RM{sum_of_amount}')
+    print(f'Total: RM{sum_of_amount:.2f}')
     _ = input('')
     return 
 
 def v_expense_cat():
     os.system('cls')
-    print('=' * 60, ' ALL EXPENSES ', '=' *60)
+    print('=' * 55, ' EXPENSES BY CATEGORY ', '=' *56)
     string_format = '{:<27} {:<27} {:<27} {:<27} {:<27}'
     header = ['ID', 'Date', 'Category', 'Amount', 'Description']
-    data = [[log['id'], log['date'], log['category'], f"RM{log['amount']}", log['description']] for log in log_dic]
+    data = [[log['id'], log['date'], log['category'], f"RM{log['amount']:.2f}", log['description']] for log in log_dic]
     dataa = sorted(data, key=lambda x: x[2])
     data_slice = [list(map(lambda x: x[:27], ls)) for ls in dataa]
     view_header = string_format.format(*header)
@@ -105,16 +105,16 @@ def v_expense_cat():
         
     print('=' * 135)
     sum_of_amount = sum(log['amount'] for log in log_dic)
-    print(f'Total: RM{sum_of_amount}')
+    print(f'Total: RM{sum_of_amount:.2f}')
     _ = input('')
     return 
 
 def v_expense_date():
         os.system('cls')
-        print('=' * 60, ' ALL EXPENSES ', '=' *60)
+        print('=' * 57, ' EXPENSES BY DATE ', '=' *58)
         string_format = '{:<27} {:<27} {:<27} {:<27} {:<27}'
         header = ['ID', 'Date', 'Category', 'Amount', 'Description']
-        data = [[log['id'], log['date'], log['category'], f"RM{log['amount']}", log['description']] for log in log_dic]
+        data = [[log['id'], log['date'], log['category'], f"RM{log['amount']:.2f}", log['description']] for log in log_dic]
         dataa = sorted(data, key=lambda x:x[1])
         data_slice = [list(map(lambda x: x[:27], ls)) for ls in dataa]
         view_header = string_format.format(*header)
@@ -125,7 +125,7 @@ def v_expense_date():
             
         print('=' * 135)
         sum_of_amount = sum(log['amount'] for log in log_dic)
-        print(f'Total: RM{sum_of_amount}')
+        print(f'Total: RM{sum_of_amount:.2f}')
         _ = input('')
         return 
 
@@ -154,12 +154,12 @@ def month_summary():
         sum_of_amount = sum(sum_ls)
         os.system('cls')
         print(f"{'-' * 75}\n{'MONTHLY SUMMARY'.center(75)}\n{'-'*75}")
-        print(f"Total spending: RM{sum_of_amount}\nAverage expense: RM{round(statistics.mean(category.values()),2)}")
+        print(f"Total spending: RM{sum_of_amount:.2f}\nAverage expense: RM{statistics.mean(category.values()):.2f}")
         print()
         print(f'Breakdown by category:\n{'-' * 75}')
         str_format = '{:<25} {:<25} {:<25}'
         for k,v in category.items():
-            ls = [k,f"RM{v}",f"({round(v/sum_of_amount * 100, 2)}%)"]
+            ls = [k,f"RM{v:.2f}",f"({round(v/sum_of_amount * 100, 2)}%)"]
             print(str_format.format(*ls))
         print('-'*75)
 
@@ -183,7 +183,7 @@ def top_spending_cat():
         else:
             category_json[e['category']] += e['amount']
     sum_of_category = sum(category_json.values())
-    ls = [[f"{category}",f'RM{v}',f'{round(v/sum_of_category * 100,2)}%'] for category,v in category_json.items()]
+    ls = [[f"{category}",f'RM{v:.2f}',f'{round(v/sum_of_category * 100,2)}%'] for category,v in category_json.items()]
     sorted_ls = sorted(ls, key=lambda x: float(x[2].rstrip('%')), reverse=True)
     for i,l in enumerate(sorted_ls):
         l[0] = f"{i+1}. {l[0]}"

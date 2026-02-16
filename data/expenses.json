@@ -5,5 +5,12 @@
         "category": "Utilities",
         "description": "Sketchers Running Shoes",
         "date": "2026-02-15"
+    },
+    {
+        "id": "260216004725",
+        "amount": 13.1,
+        "category": "Food",
+        "description": "Snacks",
+        "date": "2026-02-15"
     }
 ]
